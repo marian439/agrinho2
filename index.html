@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Linha do Tempo - Ciclo da Alimentação</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2d7a2d;
+    }
+
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    /* Linha horizontal */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 4px;
+      background: linear-gradient(90deg, #a3d9a5, #2d7a2d);
+      border-radius: 2px;
+      transform: translateY(-50%);
+      z-index: 1;
+      animation: slideGradient 3s ease forwards;
+    }
+
+    @keyframes slideGradient {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    .step {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px 15px;
+      width: 150px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .step:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(45, 122, 45, 0.4);
+      background-color: #e6f4e6;
+    }
+
+    /* Círculo indicador */
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background: #2d7a2d;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #2d7a2daa;
+      z-index: 3;
+      transition: background-color 0.3s ease;
+    }
+
+    .step:hover::before {
+      background-color: #5cc25c;
+      box-shadow: 0 0 15px #5cc25ccc;
+    }
+
+    .step h3 {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: #2d7a2d;
+    }
+
+    /* Ícones simples com emojis para simplicidade */
+    .icon {
+      font-size: 2.8rem;
+    }
+
+    /* Descrição detalhada */
+    .step p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      .timeline::before {
+        display: none;
+      }
+      .step {
+        width: 80%;
+      }
+      .step::before {
+        top: 10px;
+        left: 10px;
+        transform: none;
+        width: 24px;
+        height: 24px;
+      }
+      .step h3 {
+        margin-top: 20px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ciclo da Alimentação - Linha do Tempo</h1>
+
+  <div class="timeline">
+    <div class="step" tabindex="0" aria-label="Produção">
+      <div class="icon" role="img" aria-hidden="true">🌱</div>
+      <h3>Produção</h3>
+      <p>O processo de produção começa com o cultivo de alimentos, utilizando recursos naturais como solo, água e luz solar.</p>
+    </div>
+    <div class="step" tabindex="0" aria-label="Transporte">
+      <div class="icon" role="img" aria-hidden="true">🚛</div>
+      <h3>Transporte</h3>
+      <p>Após a colheita, os alimentos são transportados para mercados e centros de distribuição para chegar aos consumidores.</p>
+    </div>
+    <div class="step" tabindex="0" aria-label="Comercialização">
+      <div class="icon" role="img" aria-hidden="true">🏪</div>
+      <h3>Comercialização</h3>
+      <p>Os alimentos são vendidos em feiras, supermercados e outros pontos de venda, disponíveis para compra pelos consumidores.</p>
+    </div>
+    <div class="step" tabindex="0" aria-label="Consumo">
+      <div class="icon" role="img" aria-hidden="true">🍽️</div>
+      <h3>Consumo</h3>
+      <p>Após a compra, o alimento é consumido pelas pessoas, promovendo nutrição e energia.</p>
+    </div>
+    <div class="step" tabindex="0" aria-label="Descarte">
+      <div class="icon" role="img" aria-hidden="true">♻️</div>
+      <h3>Descarte</h3>
+      <p>Após o consumo, os resíduos alimentares e embalagens são descartados ou reciclados, fechando o ciclo.</p>
+    </div>
+  </div>
+
+</body>
+</html>
